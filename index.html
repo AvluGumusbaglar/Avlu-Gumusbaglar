@@ -102,6 +102,7 @@ header {
       z-index: 1000;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
     nav a {
@@ -109,6 +110,54 @@ header {
       margin: 0 1.5rem;
       font-weight: 600;
       font-size: 1.15rem;
+    }
+
+    /* Hamburger Menü Butonu */
+    .menu-toggle {
+      display: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      user-select: none;
+      font-weight: 700;
+      margin-left: 1rem;
+    }
+
+    /* Menü linkleri kapsayıcısı */
+    .menu-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 2rem;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .menu-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+
+      .menu-links.active {
+        display: flex;
+      }
+
+      nav a {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+      }
     }
 
     section {
@@ -200,11 +249,6 @@ header {
         padding: 0 1rem;
       }
 
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
-
       nav a {
         margin: 0.5rem 0;
         font-size: 1rem;
@@ -252,11 +296,14 @@ header {
   </header>
 
   <nav>
-    <a href="#about">Avlu'nun Hikayesi</a>
-    <a href="#gallery">Avlu'dan Kareler</a>
-    <a href="#menu">Menü</a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰ Menü</div>
+    <div class="menu-links">
+      <a href="#about">Avlu'nun Hikayesi</a>
+      <a href="#gallery">Avlu'dan Kareler</a>
+      <a href="#menu">Menü</a>
       <a href="#events">Özel Davetler</a>
-    <a href="#contact">İletişim</a>
+      <a href="#contact">İletişim</a>
+    </div>
   </nav>
 
   <section id="about">
@@ -305,6 +352,11 @@ header {
   <div class="cta-fixed">
     <a href="tel:+905312442988">Rezervasyon Yap</a>
   </div>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.menu-links').classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
-
